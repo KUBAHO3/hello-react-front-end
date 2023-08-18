@@ -1,14 +1,16 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import { Provider } from "react-redux";
-import App from "./App"
-import store from "./components/store";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './App';
+import store from './components/store';
 
 function Index() {
-    return (
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
-  }
-  ReactDOM.render(<Index />, document.getElementById('root'));
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+}
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
+root.render(<Index />);
