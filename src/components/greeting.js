@@ -1,23 +1,23 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchgreeting } from '../slices/greetingSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchgreetings } from '../redux/greetingSlice';
 
 const Greeting = () => {
-  const greetings = useSelector((store) => store.greeting);
   const dispatch = useDispatch();
+  const { greeting, loading } = useSelector((store) => store.greeting);
+  console.log(greeting);
 
   useEffect(() => {
-    dispatch(fetchgreeting());
-  }, []);
+    dispatch(fetchgreetings());
+  }, [dispatch]);
 
-  if (greetings.isLoading) {
-    return <p>Loading...</p>;
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <h1>Before All</h1>
-      <p>{greetings.greeting.message}</p>
+      <h1>{greeting.message}</h1>
     </div>
   );
 };
