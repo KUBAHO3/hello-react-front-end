@@ -30,10 +30,7 @@ const greetingsSlice = createSlice({
       })
       .addCase(fetchgreetings.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.greeting = action.payload.map((greeting) => ({
-          id: greeting.id,
-          message: greeting.message,
-        }));
+        state.greeting = action.payload;
         state.loading = false;
       })
       .addCase(fetchgreetings.rejected, (state, action) => {
